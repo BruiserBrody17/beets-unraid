@@ -30,7 +30,7 @@ import:
     # of the same album still gets caught correctly with this added.
 
 paths:
-    default: $formatcode/$channels-Channel/%upper{%left{$albumartist,1}}/$albumartist/($original_year) $album%if{$distinctdisambig, (%title{$distinctdisambig})} {%title{$albumtype}$} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $title
+    default: $formatcode/$channels-Channel/%upper{%left{$albumartist,1}}/$albumartist/($original_year) $album%if{$distinctdisambig, ($distinctdisambig)} {%title{$albumtype}$} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $title
     singleton: Non-Album/$artist/$title
     comp: Compilations/$album%aunique{}/$track $title
 
