@@ -24,4 +24,7 @@ then add this container.</Overview>
   <Config Name="Config" Target="/config" Default="/mnt/user/appdata/beets-custom" Mode="rw" Description="config.yaml, library.db, import.log" Type="Path" Display="always" Required="true" Mask="false"/>
   <Config Name="Incoming" Target="/music/incoming" Default="/mnt/user/beetsin" Mode="rw" Description="Untagged rips waiting to be imported" Type="Path" Display="always" Required="true" Mask="false"/>
   <Config Name="Library" Target="/music/library" Default="/mnt/user/beetsout" Mode="rw" Description="Tagged output library (what Roon points at)" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID that beets runs as (99 = Unraid's nobody)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID that beets runs as (100 = Unraid's users)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="Umask applied before beets writes any files" Type="Variable" Display="always" Required="false" Mask="false"/>
 </Container>

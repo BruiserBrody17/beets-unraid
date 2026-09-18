@@ -54,6 +54,18 @@ tip.
    beet import /music/incoming
    ```
 
+## User/permissions
+
+The container runs beets as a non-root user, remapped at startup to
+whatever `PUID`/`PGID` you set (default `99`/`100`, matching Unraid's own
+`nobody:users` convention) via `entrypoint.sh`. `UMASK` (default `022`) is
+applied before beets writes anything. All three are plain environment
+variables set in the Unraid template -- change them there if your shares
+use different ownership. `docker exec -it beets-custom bash` still drops
+you in as root, since exec bypasses the entrypoint; run
+`gosu beets bash` (or `su beets`) inside if you want a shell as the
+same user beets itself runs as.
+
 ## Notes
 
 - `import.timid: yes` is on by default in `config.yaml.example` -- every
