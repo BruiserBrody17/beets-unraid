@@ -8,7 +8,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gosu \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir \
+# Docker's build cache keys this layer on the Dockerfile text, not on
+# what's actually on GitHub right now -- a plain `docker build` will NOT
+# notice new commits to any of these four repos and will silently reuse
+# the old install. Pass --build-arg PLUGIN_REV=$(date +%s) to force this
+# layer (and only this layer -- apt-get above stays cached) to re-run.
+ARG PLUGIN_REV=1
+RUN echo "plugin rev: ${PLUGIN_REV}" && pip install --no-cache-dir \
         "git+https://github.com/BruiserBrody17/beets.git@fix-fetchart-nested-art-dirs" \
         "git+https://github.com/BruiserBrody17/beets-originquery.git" \
         "git+https://github.com/BruiserBrody17/beets-classical-tags.git" \

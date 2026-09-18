@@ -29,10 +29,21 @@ cd beets-unraid
 docker build -t beets-custom:latest .
 ```
 
-Re-run the `git clone`+`docker build` (or `git pull` + rebuild in an
-existing checkout) any time you want to pick up new commits from any of the
-four repos above -- the Dockerfile always pulls their current `HEAD`/branch
-tip.
+To pick up new commits from any of the four plugin/beets repos later,
+`git pull` in this checkout will almost always say "up to date" -- that's
+expected, since this repo only holds the Dockerfile itself, not the plugin
+source. The actual fetch happens inside `docker build`, via `pip install
+git+https://...`, and Docker's build cache doesn't know or care that
+GitHub has new commits; it only reacts to changes in the Dockerfile text.
+So a plain re-run of `docker build` will silently keep the old code too.
+To force a real refresh:
+
+```sh
+docker build --build-arg PLUGIN_REV=$(date +%s) -t beets-custom:latest .
+```
+
+This only busts the one layer that installs the four repos (not the
+`apt-get` layer above it), so it's still a fast rebuild.
 
 ## Install the template
 
