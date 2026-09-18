@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>beets-custom</Name>
+  <Repository>beets-custom:latest</Repository>
+  <Registry/>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://github.com/BruiserBrody17/beets-unraid</Project>
+  <Overview>Custom beets build: core fork (fetchart subdirectory fix) plus
+originquery, classical_tags, and roon_artwork plugins. No web UI -- this
+container just stays alive; open its Console (or `docker exec -it
+beets-custom bash`) and run `beet import /music/incoming` etc. by hand.
+Build the image first: clone https://github.com/BruiserBrody17/beets-unraid
+on your Unraid box and run `docker build -t beets-custom:latest .` in it,
+then add this container.</Overview>
+  <Category>MediaApp:Music</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/beets-custom" Mode="rw" Description="config.yaml, library.db, import.log" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Incoming" Target="/music/incoming" Default="/mnt/user/beetsin" Mode="rw" Description="Untagged rips waiting to be imported" Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Library" Target="/music/library" Default="/mnt/user/beetsout" Mode="rw" Description="Tagged output library (what Roon points at)" Type="Path" Display="always" Required="true" Mask="false"/>
+</Container>
