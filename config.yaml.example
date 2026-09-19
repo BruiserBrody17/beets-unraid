@@ -7,6 +7,13 @@ directory: /music/library
 library: /config/library.db
 
 per_disc_numbering: yes
+artist_credit: yes
+# Without this, artist/albumartist (and the plural artists/albumartists)
+# use MusicBrainz's raw artist-entity name, not the release's own credit
+# -- for a translated/transliterated pseudo-release specifically chosen
+# to get e.g. "Yoko Shimomura" instead of "下村陽子", the entity name
+# stays in its native script regardless, since only the release CREDIT
+# was translated. This makes those fields follow the credit instead.
 
 import:
     move: no
