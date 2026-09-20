@@ -37,9 +37,9 @@ import:
     # of the same album still gets caught correctly with this added.
 
 paths:
-    default: $formatcode/$channels-Channel/%if{$is_soundtrack,Soundtracks,%upper{%left{$albumartist,1}}/$albumartist}/($original_year) $album%if{$distinctdisambig, ($distinctdisambig)} {%title{$albumtype}$} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $title
+    default: $formatcode/$channels-Channel/%if{$is_soundtrack,Soundtracks,%upper{%left{$albumartist,1}}/$albumartist}/($original_year) $album%if{$distinctdisambig, ($distinctdisambig)} {$albumtype_display} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $title
     singleton: Non-Album/$artist/$title
-    comp: $formatcode/$channels-Channel/Compilations/($original_year) $album%if{$distinctdisambig, ($distinctdisambig)} {%title{$albumtype}$} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $artist - $title
+    comp: $formatcode/$channels-Channel/Compilations/($original_year) $album%if{$distinctdisambig, ($distinctdisambig)} {$albumtype_display} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $artist - $title
 
 plugins:
     - musicbrainz
