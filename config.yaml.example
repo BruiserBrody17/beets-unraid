@@ -39,7 +39,7 @@ import:
 paths:
     default: $formatcode/$channels-Channel/%if{$is_soundtrack,Soundtracks,%upper{%left{$albumartist,1}}/$albumartist}/($original_year) $album%if{$distinctdisambig, ($distinctdisambig)} {%title{$albumtype}$} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $title
     singleton: Non-Album/$artist/$title
-    comp: Compilations/$album%aunique{}/$track $title
+    comp: $formatcode/$channels-Channel/Compilations/($original_year) $album%if{$distinctdisambig, ($distinctdisambig)} {%title{$albumtype}$} [%first{$media,1,0, (}]%aunique{}/$discprefix$track $artist - $title
 
 plugins:
     - musicbrainz
