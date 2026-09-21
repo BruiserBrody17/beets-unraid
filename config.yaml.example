@@ -55,6 +55,9 @@ replaygain:
 musicbrainz:
     extra_tags: [year, catalognum, country, media, label, albumdisambig]
 
+roon_artwork:
+    fetch_caa_art: no
+
 originquery:
     origin_file: origin.yaml
     tag_patterns:
